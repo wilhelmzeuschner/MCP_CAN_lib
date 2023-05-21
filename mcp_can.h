@@ -38,8 +38,11 @@ class MCP_CAN
     INT8U   m_nDta[MAX_CHAR_IN_MESSAGE];                                // Data array
     INT8U   m_nRtr;                                                     // Remote request flag
     INT8U   m_nfilhit;                                                  // The number of the filter that matched the message
-    SPIClass *mcpSPI;                                                       // The SPI-Device used
+    SPIClass *mcpSPI;                                                   // The SPI-Device used
     INT8U   MCPCS;                                                      // Chip Select pin number
+    INT8U MCPSCK;                                                       // Clock pin number
+    INT8U MCPMISO;                                                      // MISO Select pin number
+    INT8U MCPMOSI;                                                      // MOSI Select pin number
     INT8U   mcpMode;                                                    // Mode to return to after configurations are performed.
     
 
