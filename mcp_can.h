@@ -112,6 +112,7 @@ class MCP_CAN
 public:
     MCP_CAN(INT8U _CS);
     MCP_CAN(SPIClass *_SPI, INT8U _CS);
+    MCP_CAN(INT8U _SCK, INT8U _MISO, INT8U _MOSI, INT8U _CS);
     INT8U begin(INT8U idmodeset, INT8U speedset, INT8U clockset);       // Initialize controller parameters
     INT8U init_Mask(INT8U num, INT8U ext, INT32U ulData);               // Initialize Mask(s)
     INT8U init_Mask(INT8U num, INT32U ulData);                          // Initialize Mask(s)

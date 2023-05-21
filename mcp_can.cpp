@@ -822,6 +822,19 @@ MCP_CAN::MCP_CAN(INT8U _CS)
 
 /*********************************************************************************************************
 ** Function name:           MCP_CAN
+** Descriptions:            Public function to declare CAN class with SPI and the /CS pin.
+*********************************************************************************************************/
+MCP_CAN::MCP_CAN(SPIClass *_SPI, INT8U _CS)
+{
+    MCPSCK, MCPMISO, MCPMOSI = -1;
+    MCPCS = _CS;
+    MCP2515_UNSELECT();
+    pinMode(MCPCS, OUTPUT);
+    mcpSPI = _SPI;
+}
+
+/*********************************************************************************************************
+** Function name:           MCP_CAN
 ** Descriptions:            Public function to declare CAN class and all SPI pins.
 *********************************************************************************************************/
 MCP_CAN::MCP_CAN(INT8U _SCK, INT8U _MISO, INT8U _MOSI, INT8U _CS)
@@ -833,19 +846,6 @@ MCP_CAN::MCP_CAN(INT8U _SCK, INT8U _MISO, INT8U _MOSI, INT8U _CS)
     MCP2515_UNSELECT();
     pinMode(MCPCS, OUTPUT);
     mcpSPI = &SPI;
-}
-
-/*********************************************************************************************************
-** Function name:           MCP_CAN
-** Descriptions:            Public function to declare CAN class with SPI and the /CS pin.
-*********************************************************************************************************/
-MCP_CAN::MCP_CAN(SPIClass *_SPI, INT8U _CS)
-{
-    MCPSCK, MCPMISO, MCPMOSI = -1;
-    MCPCS = _CS;
-    MCP2515_UNSELECT();
-    pinMode(MCPCS, OUTPUT);
-    mcpSPI = _SPI;
 }
 
 /*********************************************************************************************************
