@@ -812,7 +812,7 @@ INT8U MCP_CAN::mcp2515_getNextFreeTXBuf(INT8U *txbuf_n)                 /* get N
 *********************************************************************************************************/
 MCP_CAN::MCP_CAN(INT8U _CS)
 {
-    _SCK, _MISO, _MOSI = -1;
+    MCPSCK, MCPMISO, MCPMOSI = -1;
     MCPCS = _CS;
     MCP2515_UNSELECT();
     pinMode(MCPCS, OUTPUT);
@@ -841,7 +841,7 @@ MCP_CAN::MCP_CAN(INT8U _SCK, INT8U _MISO, INT8U _MOSI, INT8U _CS)
 *********************************************************************************************************/
 MCP_CAN::MCP_CAN(SPIClass *_SPI, INT8U _CS)
 {
-    _SCK, _MISO, _MOSI = -1;
+    MCPSCK, MCPMISO, MCPMOSI = -1;
     MCPCS = _CS;
     MCP2515_UNSELECT();
     pinMode(MCPCS, OUTPUT);
@@ -857,8 +857,8 @@ INT8U MCP_CAN::begin(INT8U idmodeset, INT8U speedset, INT8U clockset)
     INT8U res;
 
     // Use custom SPI pin numbers if defined
-    if(_SCK != -1) {
-        mcpSPI->begin(_SCK, _MISO, _MOSI, _CS);
+    if(MCPSCK != -1) {
+        mcpSPI->begin(MCPSCK, MCPMISO, MCPMOSI, MCPCS);
     }
     else {
         mcpSPI->begin();
